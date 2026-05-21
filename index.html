@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skala Kallonis Biogas Energy Community — StoryMap</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1a3d2b;
+    --green-mid: #2d6a4f;
+    --green-bright: #40916c;
+    --green-light: #74c69d;
+    --green-pale: #d8f3dc;
+    --amber: #f4a261;
+    --amber-dark: #e76f51;
+    --sky: #023e8a;
+    --sky-light: #48cae4;
+    --cream: #fefae0;
+    --off-white: #f8f9fa;
+    --text-dark: #1b1b1b;
+    --text-muted: #4a5568;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Source Sans 3', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--text-dark);
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ─── NAV ─────────────────────────────────── */
+  nav.top-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: var(--green-deep);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 52px;
+    border-bottom: 2px solid var(--green-bright);
+  }
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo {
+    width: 28px; height: 28px;
+    background: var(--green-bright);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .nav-links {
+    display: flex; gap: 0; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0 14px;
+    line-height: 52px;
+    transition: color 0.2s;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav-links a:hover { color: var(--green-light); }
+
+  /* ─── HERO ─────────────────────────────────── */
+  .hero {
+    margin-top: 52px;
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--green-deep) 0%, #0d2b1e 40%, #061a10 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      45deg,
+      #40916c 0px, #40916c 1px,
+      transparent 1px, transparent 40px
+    );
+  }
+  .hero-badge {
+    background: var(--green-bright);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 6vw, 4.8rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    max-width: 900px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green-light);
+  }
+  .hero-sub {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 640px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    min-width: 140px;
+  }
+  .hero-stat .num {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--green-light);
+    line-height: 1;
+  }
+  .hero-stat .lbl {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+  .scroll-cue {
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: bounce 2s infinite;
+  }
+  .scroll-cue svg { opacity: 0.5; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ─── CHAPTER WRAPPER ─────────────────────── */
+  section.chapter {
+    padding: 5rem 0;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .chapter-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-bright);
+    margin-bottom: 0.5rem;
+  }
+  h2.chapter-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--green-deep);
+    margin-bottom: 1.2rem;
+  }
+  .chapter-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  /* ─── DIVIDER ─────────────────────────────── */
+  .chapter-divider {
+    display: block;
+    height: 4px;
+    background: var(--green-bright);
+    border: none;
+    margin: 0;
+    opacity: 0.35;
+  }
+
+  /* ─── ALTERNATE BG ────────────────────────── */
+  .bg-cream { background: var(--cream); }
+  .bg-deep {
+    background: var(--green-deep);
+    color: #fff;
+  }
+  .bg-deep h2.chapter-title { color: var(--green-light); }
+  .bg-deep .chapter-intro { color: rgba(255,255,255,0.7); }
+  .bg-deep .chapter-label { color: var(--green-light); }
+
+  /* ─── GRID CARDS ──────────────────────────── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--green-bright);
+  }
+  .card.amber::before { background: var(--amber); }
+  .card.sky::before { background: var(--sky); }
+  .card.danger::before { background: #e53e3e; }
+  .card-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--green-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 1rem;
+  }
+  .card-icon.amber { background: #fff3e0; }
+  .card-icon.sky { background: #e3f2fd; }
+  .card-icon.danger { background: #fff5f5; }
+  .card h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    margin-bottom: 0.5rem;
+  }
+  .card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .card .metric {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--green-bright);
+    margin: 0.5rem 0 0.2rem;
+  }
+  .card .metric.amber { color: var(--amber-dark); }
+  .card .metric.sky { color: var(--sky); }
+  .card .metric.danger { color: #e53e3e; }
+
+  /* ─── MAP PLACEHOLDER ─────────────────────── */
+  .map-frame {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid var(--green-light);
+    position: relative;
+    background: #e8f5e9;
+  }
+  .map-inner {
+    width: 100%; height: 480px;
+    position: relative;
+    overflow: hidden;
+  }
+  .map-svg-wrapper {
+    width: 100%; height: 100%;
+  }
+  .map-overlay {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    min-width: 180px;
+  }
+  .map-overlay h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 6px; font-size: 12px;
+  }
+  .legend-dot {
+    width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+  }
+  .map-note {
+    position: absolute;
+    bottom: 14px; right: 14px;
+    background: rgba(26,61,43,0.9);
+    color: #fff;
+    font-size: 11px;
+    border-radius: 8px;
+    padding: 8px 12px;
+    max-width: 220px;
+  }
+
+  /* ─── FLOW DIAGRAM ────────────────────────── */
+  .flow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 2.5rem 0;
+  }
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 130px;
+  }
+  .flow-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--green-bright);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--green-bright);
+  }
+  .flow-icon.step2 { background: #2196F3; box-shadow: 0 0 0 2px #2196F3; }
+  .flow-icon.step3 { background: var(--amber-dark); box-shadow: 0 0 0 2px var(--amber-dark); }
+  .flow-icon.step4 { background: #9c27b0; box-shadow: 0 0 0 2px #9c27b0; }
+  .flow-icon.step5 { background: var(--green-deep); box-shadow: 0 0 0 2px var(--green-deep); }
+  .flow-step p { font-size: 11px; font-weight: 600; color: var(--text-muted); line-height: 1.3; }
+  .flow-arrow {
+    width: 40px;
+    display: flex; align-items: center; justify-content: center;
+    color: #ccc;
+    font-size: 22px;
+    padding-bottom: 30px;
+  }
+
+  /* ─── TWO-COL LAYOUT ──────────────────────── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+
+  /* ─── DATA TABLE ──────────────────────────── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .data-table th {
+    background: var(--green-deep);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+  .data-table tr:nth-child(even) td { background: #f7faf9; }
+  .data-table tr:hover td { background: var(--green-pale); }
+  .data-table .highlight {
+    font-weight: 700;
+    color: var(--green-bright);
+  }
+
+  /* ─── CALLOUT BOX ─────────────────────────── */
+  .callout {
+    border-left: 5px solid var(--green-bright);
+    background: var(--green-pale);
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 12px 12px 0;
+    margin: 1.5rem 0;
+  }
+  .callout.amber {
+    border-color: var(--amber);
+    background: #fff8f0;
+  }
+  .callout.danger {
+    border-color: #e53e3e;
+    background: #fff5f5;
+  }
+  .callout strong {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--green-bright);
+    margin-bottom: 0.3rem;
+  }
+  .callout.amber strong { color: var(--amber-dark); }
+  .callout.danger strong { color: #e53e3e; }
+
+  /* ─── TIMELINE ────────────────────────────── */
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--green-light);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: -2.5rem;
+    top: 4px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--green-bright);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--green-bright);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    color: #fff;
+    font-weight: 700;
+  }
+  .timeline-year {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+  .timeline-item h4 {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    margin-bottom: 0.3rem;
+  }
+  .timeline-item p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  /* ─── ECONOMICS CHART ─────────────────────── */
+  .chart-wrap {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+  .chart-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    margin-bottom: 1rem;
+  }
+
+  /* ─── ACCORDION ───────────────────────────── */
+  .accordion-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+  .accordion-btn {
+    width: 100%;
+    background: #fff;
+    border: none;
+    padding: 1rem 1.25rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green-deep);
+    transition: background 0.2s;
+  }
+  .accordion-btn:hover { background: var(--green-pale); }
+  .accordion-btn .chevron {
+    transition: transform 0.25s;
+    color: var(--green-bright);
+  }
+  .accordion-btn.open .chevron { transform: rotate(180deg); }
+  .accordion-body {
+    display: none;
+    padding: 0 1.25rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background: #fdfdfd;
+    line-height: 1.7;
+  }
+  .accordion-body.open { display: block; }
+
+  /* ─── BADGE ───────────────────────────────── */
+  .badge {
+    display: inline-block;
+    background: var(--green-pale);
+    color: var(--green-deep);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+  .badge.amber { background: #fff3e0; color: #b45309; }
+  .badge.sky { background: #e3f2fd; color: var(--sky); }
+  .badge.danger { background: #fff5f5; color: #c53030; }
+
+  /* ─── PROGRESS BAR ────────────────────────── */
+  .progress-wrap { margin: 0.5rem 0 1rem; }
+  .progress-label {
+    display: flex; justify-content: space-between;
+    font-size: 12px; margin-bottom: 4px;
+    color: var(--text-muted);
+  }
+  .progress-bar {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--green-bright);
+    border-radius: 4px;
+    transition: width 1s ease;
+  }
+  .progress-fill.amber { background: var(--amber); }
+  .progress-fill.sky { background: var(--sky-light); }
+
+  /* ─── ZONE MAP (SVG ILLUSTRATION) ─────────── */
+  .zone-legend {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-top: 1rem;
+  }
+
+  /* ─── FINAL CTA ───────────────────────────── */
+  .cta-block {
+    background: var(--green-deep);
+    color: #fff;
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .cta-block h3 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .cta-block p { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 560px; margin: 0 auto 2rem; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--green-bright);
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 15px;
+    margin: 0 8px 8px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-light); transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-block;
+    border: 2px solid rgba(255,255,255,0.4);
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    margin: 0 8px 8px;
+  }
+
+  /* ─── FOOTER ──────────────────────────────── */
+  footer {
+    background: #0d1f14;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ─── CHAPTER NAV DOTS ────────────────────── */
+  .chapter-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .chapter-nav a {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(45,106,79,0.3);
+    border: 1.5px solid var(--green-bright);
+    display: block;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .chapter-nav a:hover, .chapter-nav a.active {
+    background: var(--green-bright);
+    transform: scale(1.3);
+  }
+
+  @media (max-width: 600px) {
+    .chapter-nav { display: none; }
+    .flow-arrow { width: 20px; }
+    .flow-step { width: 90px; }
+    .hero-stats { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="nav-brand">
+    <div class="nav-logo">🌿</div>
+    Skala Kallonis Biogas Community
+  </div>
+  <ul class="nav-links">
+    <li><a href="#context">Context</a></li>
+    <li><a href="#foodwaste">Food Waste</a></li>
+    <li><a href="#technical">Technical</a></li>
+    <li><a href="#land">Land & Zoning</a></li>
+    <li><a href="#transport">Transport</a></li>
+    <li><a href="#economics">Economics</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+</nav>
+
+<!-- Side nav dots -->
+<nav class="chapter-nav" aria-label="Section navigation">
+  <a href="#context" title="Context"></a>
+  <a href="#foodwaste" title="Food Waste Hotspots"></a>
+  <a href="#technical" title="Technical Feasibility"></a>
+  <a href="#land" title="Land Use &amp; Zoning"></a>
+  <a href="#transport" title="Transportation"></a>
+  <a href="#economics" title="Economic Sustainability"></a>
+  <a href="#community" title="Energy Community"></a>
+  <a href="#roadmap" title="Roadmap"></a>
+</nav>
+
+<!-- ═══════════════════════════════ HERO ═══════ -->
+<section class="hero" id="top">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-badge">Transferable ArcGIS StoryMap · Lesvos, Greece</div>
+  <h1>From <em>Food Waste</em> to<br>Community Power</h1>
+  <p class="hero-sub">A biogas energy cooperative for Skala Kallonis — turning tourism's organic surplus into clean electricity for 30 households and a women's cooperative.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">30</div>
+      <div class="lbl">Founding households</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">~180</div>
+      <div class="lbl">kWh/day potential</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">€35K</div>
+      <div class="lbl">Annual savings est.</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">7–9</div>
+      <div class="lbl">Year payback</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">Natura 2000</div>
+      <div class="lbl">Gulf of Kalloni</div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    Scroll to explore
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</section>
+
+<hr class="chapter-divider">
+
+<!-- ═══════════════════════════════ CHAPTER 1: CONTEXT ═══ -->
+<section class="chapter" id="context">
+  <div class="container">
+    <div class="chapter-label">Chapter 1 · Context &amp; Vision</div>
+    <h2 class="chapter-title">Skala Kallonis: A Tourism Hotspot in an Ecological Crown</h2>
+    <p class="chapter-intro">Located at the heart of Lesvos, Skala Kallonis sits beside one of Europe's most important wetlands. Its booming summer tourism generates a hidden cost: organic food waste that currently goes unrecovered.</p>
+
+    <div class="two-col">
+      <div>
+        <div class="card-grid" style="grid-template-columns: 1fr 1fr;">
+          <div class="card">
+            <div class="card-icon">🐟</div>
+            <h3>The Sardine Economy</h3>
+            <p>World-renowned "Papalina" sardine festivals each August draw thousands of visitors, generating concentrated fish-waste streams from ~25 waterfront tavernas.</p>
+          </div>
+          <div class="card amber">
+            <div class="card-icon amber">♨️</div>
+            <h3>Tourism Pressure</h3>
+            <p class="metric amber">~2.28 kg</p>
+            <p>food waste per guest per day generated by hospitality operations (international benchmark, tourism islands).</p>
+          </div>
+          <div class="card sky">
+            <div class="card-icon sky">🦩</div>
+            <h3>Natura 2000 Zone</h3>
+            <p>The Gulf of Kalloni wetland hosts 311 bird species including flamingos. Any energy solution must safeguard this ecological asset.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Energy Isolation</h3>
+            <p>As a Greek island, Lesvos relies on expensive grid imports. Energy self-sufficiency is both economically and strategically vital.</p>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top: 1.5rem;">
+          <strong>Why Biogas?</strong>
+          Anaerobic digestion of food waste produces ~261 litres of biogas per kg of cooked food waste. Run through a CHP unit, 1 m³ of biogas yields 1.2–1.8 kWh of electricity — sufficient to power a household's daily lighting and basic appliances.
+        </div>
+      </div>
+
+      <div>
+        <!-- Illustrative local map (SVG) -->
+        <div class="map-frame">
+          <div class="map-inner">
+            <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+              <!-- Sea background -->
+              <rect width="520" height="380" fill="#cce8f0"/>
+              <!-- Lesvos island rough silhouette suggestion -->
+              <ellipse cx="260" cy="190" rx="230" ry="150" fill="#e8f5e9" opacity="0.9"/>
+              <!-- Gulf of Kalloni (bay indentation) -->
+              <ellipse cx="200" cy="230" rx="90" ry="55" fill="#9dd6e8" opacity="0.9"/>
+              <text x="155" y="245" font-family="serif" font-size="11" fill="#1a5276" font-style="italic">Gulf of Kalloni</text>
+
+              <!-- Wetland / Natura 2000 hatch -->
+              <rect x="135" y="195" width="130" height="55" rx="8" fill="none" stroke="#2d6a4f" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+              <text x="145" y="212" font-family="sans-serif" font-size="9" fill="#2d6a4f">Natura 2000</text>
+
+              <!-- Skala Kallonis village marker -->
+              <circle cx="190" cy="200" r="10" fill="#e74c3c" opacity="0.9"/>
+              <text x="205" y="196" font-family="sans-serif" font-size="12" fill="#333" font-weight="bold">Skala Kallonis</text>
+
+              <!-- Kalloni town -->
+              <circle cx="230" cy="175" r="7" fill="#f39c12" opacity="0.9"/>
+              <text x="242" y="179" font-family="sans-serif" font-size="11" fill="#666">Kalloni</text>
+
+              <!-- Roads -->
+              <line x1="190" y1="200" x2="230" y2="175" stroke="#bbb" stroke-width="2.5" stroke-dasharray="4,2"/>
+              <line x1="190" y1="200" x2="130" y2="170" stroke="#bbb" stroke-width="2" stroke-dasharray="3,3"/>
+              <line x1="190" y1="200" x2="200" y2="260" stroke="#bbb" stroke-width="2" stroke-dasharray="3,3"/>
+
+              <!-- Proposed digester site -->
+              <rect x="165" y="218" width="24" height="24" rx="5" fill="#40916c" opacity="0.9"/>
+              <text x="152" y="258" font-family="sans-serif" font-size="10" fill="#40916c" font-weight="600">Proposed Digester</text>
+
+              <!-- Hotspot zones -->
+              <circle cx="190" cy="205" r="28" fill="#e74c3c" opacity="0.12" stroke="#e74c3c" stroke-width="1.2" stroke-dasharray="3,2"/>
+              <circle cx="185" cy="202" r="14" fill="#e74c3c" opacity="0.18"/>
+              <text x="210" y="230" font-family="sans-serif" font-size="9" fill="#c0392b">Waste hotspot</text>
+
+              <!-- Salt pans -->
+              <rect x="140" y="250" width="60" height="25" rx="4" fill="#f0e68c" opacity="0.6" stroke="#d4c300" stroke-width="1"/>
+              <text x="145" y="267" font-family="sans-serif" font-size="9" fill="#7d6e00">Salt Pans</text>
+
+              <!-- Scale bar -->
+              <line x1="380" y1="350" x2="430" y2="350" stroke="#555" stroke-width="1.5"/>
+              <text x="380" y="345" font-family="sans-serif" font-size="10" fill="#555">0</text>
+              <text x="420" y="345" font-family="sans-serif" font-size="10" fill="#555">2km</text>
+
+              <!-- North arrow -->
+              <text x="468" y="78" font-family="sans-serif" font-size="11" fill="#333" font-weight="bold">N</text>
+              <polygon points="472,85 468,105 476,105" fill="#333" opacity="0.5"/>
+
+              <!-- Wind indicator -->
+              <text x="30" y="55" font-family="sans-serif" font-size="9" fill="#555">Aegean Sea</text>
+            </svg>
+            <div class="map-overlay">
+              <h4>Legend</h4>
+              <div class="legend-item"><div class="legend-dot" style="background:#e74c3c;"></div>Food Waste Hotspot</div>
+              <div class="legend-item"><div class="legend-dot" style="background:#40916c;"></div>Proposed Digester Site</div>
+              <div class="legend-item"><div class="legend-dot" style="background:#9dd6e8;"></div>Gulf / Wetland</div>
+              <div class="legend-item"><div class="legend-dot" style="border:1.5px dashed #2d6a4f;background:transparent;"></div>Natura 2000 Boundary</div>
+              <div class="legend-item"><div class="legend-dot" style="background:#f0e68c;border:1px solid #d4c300;"></div>Salt Pans</div>
+            </div>
+            <div class="map-note">
+              📍 Skala Kallonis · 39.17°N, 26.20°E<br>Gulf of Kalloni, Central Lesvos
+            </div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:#aaa;margin-top:6px;text-align:center;">Illustrative schematic — ArcGIS Online layer data can be substituted for production deployment</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="chapter-divider">
+
+<!-- ═══════════════════════════════ CHAPTER 2: FOOD WASTE ═══ -->
+<section class="chapter bg-cream" id="foodwaste">
+  <div class="container">
+    <div class="chapter-label">Chapter 2 · Food Waste Mapping</div>
+    <h2 class="chapter-title">Tourism Creates the Feedstock — Tourism Hotspot Analysis</h2>
+    <p class="chapter-intro">Skala Kallonis's vibrant waterfront dining scene and seasonal festivals generate predictable, high-quality organic waste streams perfectly suited for anaerobic digestion.</p>
+
+    <div class="card-grid">
+      <div class="card danger">
+        <div class="card-icon danger">🍽️</div>
+        <h3>Waterfront Tavernas</h3>
+        <div class="metric danger">~25</div>
+        <p>Restaurants along the harbour front, each producing kitchen waste estimated at 15–25 kg/day in peak season (June–September).</p>
+        <div style="margin-top:1rem;">
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Peak season intensity</span><span>85%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:85%;background:#e53e3e;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card amber">
+        <div class="card-icon amber">🐟</div>
+        <h3>Sardine Festival (August)</h3>
+        <div class="metric amber">3 days</div>
+        <p>Annual festival draws thousands of visitors. Fish waste (sardine heads, bones, guts) generates a 3-day surge of ~500–800 kg of high-methane-yield organic waste.</p>
+        <div style="margin-top:1rem;">
+          <span class="badge amber">74% methane yield</span>
+          <span class="badge amber">Fish waste</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏨</div>
+        <h3>Hotels &amp; Accommodation</h3>
+        <div class="metric">12+</div>
+        <p>Family hotels, apartments and B&Bs offering free breakfast and poolside dining. Kitchen and plate waste averages 2.28 kg/guest/day at island tourism facilities.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛒</div>
+        <h3>Market &amp; Household Waste</h3>
+        <div class="metric">~450 kg/day</div>
+        <p>Combined market stalls, domestic kitchen waste from 30+ households and cooperative production activities (olive processing, cheese-making residues).</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--green-deep);margin-bottom:1rem;">Annual Waste Stream Estimates — Skala Kallonis</h3>
+      <div style="overflow-x:auto; border-radius:12px; border:1px solid #e2e8f0;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Waste Source</th>
+              <th>Peak Season (tons/month)</th>
+              <th>Off-Season (tons/month)</th>
+              <th>Annual Total (tons)</th>
+              <th>Biogas Yield (m³)</th>
+              <th>Methane %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Restaurant kitchen waste</strong></td>
+              <td>15–18</td>
+              <td>2–4</td>
+              <td class="highlight">75–90</td>
+              <td class="highlight">~19,500</td>
+              <td>59%</td>
+            </tr>
+            <tr>
+              <td><strong>Fish / seafood waste</strong></td>
+              <td>4–6</td>
+              <td>1–2</td>
+              <td class="highlight">20–28</td>
+              <td class="highlight">~6,200</td>
+              <td>74%</td>
+            </tr>
+            <tr>
+              <td><strong>Hotel food service</strong></td>
+              <td>8–12</td>
+              <td>0.5–1</td>
+              <td class="highlight">36–50</td>
+              <td class="highlight">~11,000</td>
+              <td>59%</td>
+            </tr>
+            <tr>
+              <td><strong>Household organic</strong></td>
+              <td>3–4</td>
+              <td>3–4</td>
+              <td class="highlight">36–48</td>
+              <td class="highlight">~7,500</td>
+              <td>55%</td>
+            </tr>
+            <tr>
+              <td><strong>Cooperative food processing</strong></td>
+              <td>2–3</td>
+              <td>1–2</td>
+              <td class="highlight">18–24</td>
+              <td class="highlight">~4,000</td>
+              <td>60%</td>
+            </tr>
+            <tr style="background:var(--green-pale)!important;">
+              <td><strong>TOTAL</strong></td>
+              <td><strong>32–43</strong></td>
+              <td><strong>7.5–13</strong></td>
+              <td><strong class="highlight">185–240 tons/yr</strong></td>
+              <td><strong class="highlight">~48,200 m³/yr</strong></td>
+              <td><strong>~62% avg</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout amber" style="margin-top:2rem;">
+      <strong>Key Insight</strong>
+      At 48,200 m³ biogas annually with ~62% methane average, the theoretical electricity output via CHP (25% efficiency) reaches <strong>72,300–86,760 kWh/year</strong>. Combined with digestate value as organic fertiliser for olive and vegetable cultivation on the plain, this is a full circular economy loop.
+    </div>
+  </div>
+</section>
+
+<hr class="chapter-divider">
+
+<!-- ═══════════════════════════════ CHAPTER 3: TECHNICAL ═══ -->
+<section class="chapter" id="technical">
+  <div class="container">
+    <div class="chapter-label">Chapter 3 · Technical Feasibility</div>
+    <h2 class="chapter-title">System Design: From Waste to Watts</h2>
+    <p class="chapter-intro">A community-scale anaerobic digestion plant in the 50–100 m³ digester volume class is well-matched to Skala Kallonis's feedstock profile and serves 30 households plus the women's cooperative.</p>
+
+    <!-- Flow diagram -->
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <div class="flow-icon">🗑️</div>
+        <p>Organic waste collection (tavernas, households, coop)</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon step2">⚙️</div>
+        <p>Pre-treatment &amp; shredding / mixing tank</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon step3">🔵</div>
+        <p>Anaerobic digester 60–80 m³ mesophilic (37°C)</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon step4">🔥</div>
+        <p>Biogas storage bag &amp; H₂S scrubbing</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon step5">⚡</div>
+        <p>CHP unit (1–3 kW) → Grid + Heat recovery</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--green-deep);margin-bottom:1rem;">Recommended System Specification</h3>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)">
+            Digester Type &amp; Volume
+            <span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body">
+            <strong>Covered lagoon / CSTR (Continuous Stirred Tank Reactor)</strong> — 60–80 m³ working volume. Mesophilic operation at 35–38°C, enabled by waste heat from CHP unit. Hydraulic Retention Time (HRT): 20–30 days. Handles mixed substrates including fish waste (high N content balanced by carbohydrate-rich kitchen waste). A double-digester configuration (2 × 40 m³) allows maintenance without system shutdown.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)">
+            Biogas Storage &amp; Conditioning
+            <span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body">
+            Low-pressure gas bag storage (10–20 m³). H₂S removal via iron scrubber (essential for engine longevity). CO₂ remains — no upgrading required for CHP. Moisture separation via condensate trap. Safety pressure release valve. Estimated gas pressure: 10–20 mbar.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)">
+            CHP Unit &amp; Electrical Output
+            <span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body">
+            Modified internal combustion generator, 1–3 kW electrical output, running on 100% biogas. At 20–30% electrical efficiency: 1 m³ biogas → 1.2–1.8 kWh electricity. With 48,200 m³/year feedstock potential and conservative 60% utilisation: <strong>~34,000–52,000 kWh/year</strong> electrical generation. Heat recovery from cooling water and exhaust feeds digester heating (winter) and cooperative hot water needs.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)">
+            Digestate (Organic Fertiliser Output)
+            <span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body">
+            Approximately 70–80% of feedstock becomes liquid digestate — a nitrogen-rich biofertiliser. Estimated output: 130–170 tons/year. Applied to Kalloni valley olive orchards and vegetable plots. Eliminates chemical fertiliser cost (~€80–120/ton equivalent). This secondary revenue stream significantly improves project economics.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)">
+            Grid Connection &amp; Net Metering
+            <span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body">
+            Under Greek Law 5037/2023 (REC framework) and Law 5215/2025 (biomethane support), RECs can apply virtual net metering (VNM) — surplus electricity credited against member bills. Connection to DEDDIE (island distribution network). Installed capacity likely &lt;500 kW, falling under simplified licensing regime. Application via RAE (Regulatory Authority for Energy).
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:1.5rem;">
+          <strong>Climate Advantage</strong>
+          Lesvos's Mediterranean climate (average 18°C annual) reduces digester heating requirements relative to northern Europe, improving year-round biogas yield consistency.
+        </div>
+      </div>
+
+      <div>
+        <div class="chart-wrap">
+          <div class="chart-title">Monthly Biogas Production Estimate (m³)</div>
+          <div style="position:relative;height:260px;">
+            <canvas id="biogasChart" role="img" aria-label="Bar chart showing estimated monthly biogas production across 12 months, peaking in July and August during tourist season.">Monthly biogas: Jan 1800, Feb 1800, Mar 2200, Apr 2800, May 3500, Jun 4800, Jul 5500, Aug 5200, Sep 4200, Oct 3000, Nov 2200, Dec 1900.</canvas>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:10px;font-size:11px;color:#666;">
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#2d6a4f;display:inline-block;"></span>Tourism season boost</span>
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#74c69d;display:inline-block;"></span>Baseline household waste</span>
+          </div>
+        </div>
+
+        <div class="card-grid" style="grid-template-columns:1fr 1fr;margin-top:1.5rem;">
+          <div class="card">
+            <div class="card-icon">🌡️</div>
+            <h3>System Temp.</h3>
+            <div class="metric">35–38°C</div>
+            <p>Mesophilic range, maintained by CHP waste heat — near-zero external energy cost for heating.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">♻️</div>
+            <h3>CO₂ Avoided</h3>
+            <div class="metric">~85 tons</div>
+            <p>Per year vs landfill disposal and grid electricity, based on IPCC emission factors for Mediterranean islands.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="chapter-divider">
+
+<!-- ═══════════════════════════════ CHAPTER 4: LAND USE ═══ -->
+<section class="chapter bg-cream" id="land">
+  <div class="container">
+    <div class="chapter-label">Chapter 4 · Land Use &amp; Zoning</div>
+    <h2 class="chapter-title">Where Can the Digester Go? Zone Analysis</h2>
+    <p class="chapter-intro">Site selection must balance proximity to waste sources, distance from Natura 2000 boundaries, road access, and community acceptance. Three candidate zones have been identified.</p>
+
+    <div class="two-col">
+      <div>
+        <!-- Zone map SVG -->
+        <div class="map-frame">
+          <div class="map-inner" style="height:420px;">
+            <svg viewBox="0 0 500 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+              <!-- Background -->
+              <rect width="500" height="360" fill="#f0f4f0"/>
+              <!-- Agricultural zone (Kalloni plain) -->
+              <ellipse cx="270" cy="120" rx="160" ry="80" fill="#c8e6c9" opacity="0.7"/>
+              <text x="235" y="115" font-family="sans-serif" font-size="10" fill="#388e3c">Agricultural Plain</text>
+
+              <!-- Wetland buffer (no-go) -->
+              <ellipse cx="180" cy="250" rx="95" ry="55" fill="#b3e5fc" opacity="0.7"/>
+              <rect x="120" y="220" width="120" height="55" rx="6" fill="none" stroke="#0288d1" stroke-width="2" stroke-dasharray="6,3"/>
+              <text x="130" y="242" font-family="sans-serif" font-size="9" fill="#0277bd">Wetland Buffer 200m</text>
+              <text x="132" y="255" font-family="sans-serif" font-size="8" fill="#0277bd">(No-build zone)</text>
+
+              <!-- Urban zone Skala Kallonis -->
+              <rect x="140" y="190" width="80" height="50" rx="6" fill="#ffcdd2" opacity="0.7" stroke="#e53935" stroke-width="1"/>
+              <text x="148" y="215" font-family="sans-serif" font-size="9" fill="#c62828">Urban / Taverna</text>
+              <text x="148" y="228" font-family="sans-serif" font-size="9" fill="#c62828">Zone</text>
+
+              <!-- Zone A: PREFERRED -->
+              <rect x="270" y="165" width="80" height="60" rx="8" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2"/>
+              <text x="278" y="185" font-family="sans-serif" font-size="10" fill="#1b5e20" font-weight="bold">Zone A</text>
+              <text x="275" y="200" font-family="sans-serif" font-size="9" fill="#2e7d32">PREFERRED</text>
+              <text x="276" y="215" font-family="sans-serif" font-size="8" fill="#2e7d32">Periurban edge</text>
+              <circle cx="310" cy="165" r="8" fill="#2e7d32"/>
+              <text x="305" y="169" font-family="sans-serif" font-size="9" fill="white" font-weight="bold">✓</text>
+
+              <!-- Zone B -->
+              <rect x="370" y="145" width="80" height="60" rx="8" fill="#fff9c4" stroke="#f9a825" stroke-width="2"/>
+              <text x="380" y="163" font-family="sans-serif" font-size="10" fill="#e65100" font-weight="bold">Zone B</text>
+              <text x="374" y="178" font-family="sans-serif" font-size="9" fill="#bf6000">Agricultural</text>
+              <text x="374" y="191" font-family="sans-serif" font-size="9" fill="#bf6000">edge — viable</text>
+              <text x="374" y="204" font-family="sans-serif" font-size="8" fill="#bf6000">Needs zoning change</text>
+
+              <!-- Zone C -->
+              <rect x="60" y="140" width="80" height="60" rx="8" fill="#ffccbc" stroke="#bf360c" stroke-width="2"/>
+              <text x="72" y="158" font-family="sans-serif" font-size="10" fill="#bf360c" font-weight="bold">Zone C</text>
+              <text x="66" y="173" font-family="sans-serif" font-size="9" fill="#bf360c">Industrial edge</text>
+              <text x="66" y="186" font-family="sans-serif" font-size="9" fill="#bf360c">Further away</text>
+              <text x="66" y="199" font-family="sans-serif" font-size="8" fill="#bf360c">Transport cost ↑</text>
+
+              <!-- Roads -->
+              <line x1="180" y1="190" x2="310" y2="165" stroke="#999" stroke-width="3" opacity="0.6"/>
+              <line x1="310" y1="165" x2="370" y2="155" stroke="#999" stroke-width="2" opacity="0.5" stroke-dasharray="4,3"/>
+              <line x1="180" y1="190" x2="100" y2="165" stroke="#999" stroke-width="2" opacity="0.5" stroke-dasharray="4,3"/>
+
+              <!-- Distance annotations -->
+              <text x="225" y="182" font-family="sans-serif" font-size="9" fill="#555">0.8 km</text>
+              <text x="345" y="148" font-family="sans-serif" font-size="9" fill="#555">1.4 km</text>
+
+              <!-- Scale -->
+              <line x1="20" y1="340" x2="70" y2="340" stroke="#555" stroke-width="1.5"/>
+              <text x="20" y="335" font-family="sans-serif" font-size="9" fill="#555">0    500m</text>
+
+              <!-- N arrow -->
+              <text x="468" y="38" font-family="sans-serif" font-size="11" fill="#333" font-weight="bold">N</text>
+              <polygon points="472,45 468,65 476,65" fill="#333" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="zone-legend">
+          <span class="badge" style="background:#a5d6a7;color:#1b5e20;">Zone A — Preferred periurban edge</span>
+          <span class="badge amber">Zone B — Agricultural edge (needs variance)</span>
+          <span class="badge danger">Zone C — Industrial edge (viable but distant)</span>
+          <span class="badge sky">Wetland no-build buffer (200m)</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--green-deep);margin-bottom:1.2rem;">Zone Comparison Matrix</h3>
+        <div style="overflow:auto;border-radius:12px;border:1px solid #e2e8f0;">
+          <table class="data-table">
+            <thead>
+              <tr><th>Criterion</th><th>Zone A ✓</th><th>Zone B</th><th>Zone C</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Distance to waste sources</td><td class="highlight">0.8 km</td><td>1.4 km</td><td>2.3 km</td></tr>
+              <tr><td>Natura 2000 buffer</td><td class="highlight">>300m ✓</td><td>>400m ✓</td><td>>600m ✓</td></tr>
+              <tr><td>Road access</td><td class="highlight">Good</td><td>Moderate</td><td>Good</td></tr>
+              <tr><td>Land ownership</td><td class="highlight">Municipal / coop</td><td>Private ag.</td><td>Municipal</td></tr>
+              <tr><td>Zoning status</td><td class="highlight">Agri-industrial OK</td><td>Needs variance</td><td>Industrial OK</td></tr>
+              <tr><td>Community acceptance</td><td class="highlight">High</td><td>Medium</td><td>Low</td></tr>
+              <tr><td>Odour/wind exposure</td><td class="highlight">Low (inland)</td><td>Low</td><td>Moderate</td></tr>
+              <tr><td>Land area needed</td><td colspan="3" style="color:#666;">~600–900 m² (digester + buffer + access)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" style="margin-top:1.5rem;">
+          <strong>Recommended: Zone A</strong>
+          On the periurban agricultural edge, within existing municipal land — no land acquisition cost, compatible with low-intensity agri-industrial zoning. Distance from Gulf of Kalloni wetland exceeds Greek biogas permitting 200m buffer. ΑΥΘΑΙΡΕΤΑ (informal building) exclusion zone does not apply.
+        </div>
+
+        <div class="callout amber">
+          <strong>Planning Permit Route</strong>
+          Under Law 5215/2025 (biomethane framework), biogas units of &lt;500 kW receive a streamlined single-window licensing through ΥΠΕΚΑ/RAE. Environmental Impact Assessment (Class II) required given proximity to Natura 2000 — estimated 4–6 month process.
+        </div>
+
+        <h4 style="font-family:var(--serif);margin-top:1.5rem;color:var(--green-deep);">Required Site Area Breakdown</h4>
+        <div style="margin-top:0.8rem;">
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Digester vessel(s) (2 × 40 m³)</span><span>180 m²</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:25%;"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Pre-treatment &amp; mixing area</span><span>80 m²</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:11%;background:var(--amber);"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Gas storage bag &amp; CHP building</span><span>60 m²</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:8%;background:var(--sky-light);"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Digestate lagoon / storage</span><span>200 m²</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:28%;background:#8bc34a;"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Access roads &amp; safety buffer</span><span>250 m²</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:35%;background:#ccc;"></div></div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:#888;margin-top:6px;">Total: ~770 m² — equivalent to a large urban plot</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="chapter-divider">
+
+<!-- ═══════════════════════════════ CHAPTER 5: TRANSPORT ═══ -->
+<section class="chapter" id="transport">
+  <div class="container">
+    <div class="chapter-label">Chapter 5 · Transportation Feasibility</div>
+    <h2 class="chapter-title">Collection Logistics &amp; Waste Supply Chain</h2>
+    <p class="chapter-intro">The compact geography of Skala Kallonis — a linear harbour village of roughly 1.5 km — makes waste collection extremely efficient. All major waste generators are within a single route.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🚛</div>
+        <h3>Collection Route Design</h3>
+        <p>Single daily electric-assist cargo vehicle (≤3.5 ton) with refrigerated compartment for fish waste. Total route: ~4 km round trip. Collection windows: 06:00–08:00 (restaurants) and 09:00–10:00 (households). Estimated fuel/energy cost: €3–5/day.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-icon amber">📦</div>
+        <h3>Collection Infrastructure</h3>
+        <p>25-litre HDPE bio-bins at each taverna. 120-litre shared bins per 3–4 households. Sealed to prevent odour and bird disturbance (flamingo habitat concern). Women's cooperative manages bin logistics as paid service (job creation).</p>
+      </div>
+      <div class="card sky">
+        <div class="card-icon sky">📍</div>
+        <h3>Collection Points Map</h3>
+        <p>All 25 waterfront tavernas are within a 1.2 km linear stretch. 30 households clustered within 400m of digester Zone A. Zero inter-village transport needed for initial community.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌿</div>
+        <h3>Digestate Distribution</h3>
+        <p>Liquid digestate returned to Kalloni valley agricultural plots via tractor-trailer (existing farm vehicles). Road to agricultural plain already tarmacked. Digestate sold to local farmers at €15–25/m³ as biofertiliser.</p>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:3rem;">
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--green-deep);margin-bottom:1rem;">Transport Feasibility Score</h3>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Road infrastructure quality</span><span>90%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:90%;"></div></div>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Distance to waste sources</span><span>95%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:95%;"></div></div>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Seasonal availability of waste</span><span>75%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:75%;background:var(--amber);"></div></div>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Fleet cost-effectiveness</span><span>85%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:85%;"></div></div>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Digestate return logistics</span><span>80%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:80%;"></div></div>
+        </div>
+
+        <div class="callout">
+          <strong>Overall Transport Feasibility: EXCELLENT</strong>
+          Compact geography, existing road network and flat terrain make this one of the lowest-cost collection scenarios possible for a community biogas project of this scale.
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--green-deep);margin-bottom:1rem;">Seasonal Challenge &amp; Mitigation</h3>
+        <div class="callout amber">
+          <strong>Winter Gap (Nov–Mar)</strong>
+          Restaurant waste drops ~85% in off-season. Mitigation: co-digest with livestock manure from Kalloni valley farms (cattle, sheep — abundant locally), and olive mill wastewater (November crush season). Blending maintains digester stability through winter.
+        </div>
+        <div style="margin-top:1rem;">
+          <div class="chart-wrap">
+            <div class="chart-title">Waste supply by source — seasonal blend</div>
+            <div style="position:relative;height:200px;">
+              <canvas id="seasonChart" role="img" aria-label="Stacked bar chart showing seasonal waste composition. Summer dominated by tourism waste, winter supplemented by agricultural and livestock co-substrates.">Seasonal waste sources: Summer (Jun-Sep) 65% tourism, 25% household, 10% agricultural. Winter (Nov-Mar) 20% tourism, 40% household, 40% agricultural co-substrates.</canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="chapter-divider">
+
+<!-- ═══════════════════════════════ CHAPTER 6: ECONOMICS ═══ -->
+<section class="chapter bg-cream" id="economics">
+  <div class="container">
+    <div class="chapter-label">Chapter 6 · Economic Sustainability</div>
+    <h2 class="chapter-title">Can This Pay for Itself?</h2>
+    <p class="chapter-intro">A community biogas project at this scale is economically viable within 7–9 years under conservative assumptions, with multiple revenue streams reinforcing sustainability.</p>
+
+    <!-- Summary KPIs -->
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-bottom:2rem;">
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Capital Cost</div>
+        <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--green-deep);">€180K</div>
+        <div style="font-size:11px;color:#999;">estimated total install</div>
+      </div>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">EU Grant Coverage</div>
+        <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--green-bright);">40–60%</div>
+        <div style="font-size:11px;color:#999;">via ESPA 2021–2027</div>
+      </div>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Annual Revenue</div>
+        <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--amber-dark);">€28–45K</div>
+        <div style="font-size:11px;color:#999;">electricity + fertiliser + savings</div>
+      </div>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Payback Period</div>
+        <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--sky);">7–9 yrs</div>
+        <div style="font-size:11px;color:#999;">after EU grant</div>
+      </div>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Per-Household Saving</div>
+        <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--green-deep);">€900/yr</div>
+        <div style="font-size:11px;color:#999;">average, at 30 households</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--green-deep);margin-bottom:1rem;">Revenue Streams Breakdown</h3>
+        <div style="overflow:auto;border-radius:12px;border:1px solid #e2e8f0;">
+          <table class="data-table">
+            <thead>
+              <tr><th>Revenue Stream</th><th>Annual Est. (€)</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Electricity self-consumption savings</td><td class="highlight">€14,400–18,000</td><td>30 HH × €480–600/yr savings, based on Greek island tariff ~€0.32/kWh</td></tr>
+              <tr><td>Electricity VNM credits / sale</td><td class="highlight">€4,000–7,500</td><td>Surplus power credited under REC net metering</td></tr>
+              <tr><td>Digestate biofertiliser sales</td><td class="highlight">€3,500–6,000</td><td>130–170 t/yr at €15–25/m³ to local farmers</td></tr>
+              <tr><td>Waste collection service fees</td><td class="highlight">€4,000–6,000</td><td>Tavernas pay €150–250/month tipping fee (saves them skip hire)</td></tr>
+              <tr><td>Women's coop heat use value</td><td class="highlight">€2,000–3,500</td><td>CHP waste heat for food processing (preserves, canning, drying)</td></tr>
+              <tr><td>Carbon credit potential</td><td class="highlight">€800–1,200</td><td>EU ETS voluntary credits for waste diversion (emerging market)</td></tr>
+              <tr style="background:var(--green-pale)!important;"><td><strong>TOTAL</strong></td><td><strong class="highlight">€28,700–42,200</strong></td><td><strong>Conservative to optimistic range</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" style="margin-top:1.5rem;">
+          <strong>Funding Landscape</strong>
+          ESPA 2021–2027 (Greece's EU Structural Funds programme) explicitly supports energy community projects on islands. Additionally, the RES Special Account (LAGIE) provides feed-in premium for biogas &lt;500 kW. The women's cooperative may also access LEADER rural development grants for agri-food processing integration.
+        </div>
+      </div>
+
+      <div>
+        <div class="chart-wrap" style="margin-bottom:1.5rem;">
+          <div class="chart-title">Cumulative Cash Flow Projection (€ thousands)</div>
+          <div style="position:relative;height:260px;">
+            <canvas id="cashflowChart" role="img" aria-label="Line chart showing cumulative cash flow from year 0 to year 15, crossing breakeven around year 8 and reaching approximately €150K net positive by year 15.">Cumulative cashflow: Year 0 -72000 (after 60% grant), Year 1-68000, Year 2-60000, Year 3-51000, Year 4-42000, Year 5-33000, Year 6-22000, Year 7-11000, Year 8 +2000, Year 9 +16000, Year 10 +32000, Year 12 +65000, Year 15 +116000.</canvas>
+          </div>
+        </div>
+
+        <div class="chart-wrap">
+          <div class="chart-title">Capital Cost Breakdown</div>
+          <div style="position:relative;height:200px;">
+            <canvas id="costChart" role="img" aria-label="Doughnut chart showing capital cost breakdown: digester 35%, CHP unit 20%, civil works 18%, gas handling 12%, grid connection 10%, collection fleet 5%.">Capital costs: Digester vessel 35%, CHP unit 20%, Civil works 18%, Gas handling 12%, Grid connection 10%, Collection fleet 5%.</canvas>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;font-size:11px;">
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#2d6a4f;display:inline-block;"></span>Digester 35%</span>
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#40916c;display:inline-block;"></span>CHP 20%</span>
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#74c69d;display:inline-block;"></span>Civil 18%</span>
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#f4a261;display:inline-block;"></span>Gas handling 12%</span>
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#023e8a;display:inline-block;"></span>Grid 10%</span>
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#e76f51;display:inline-block;"></span>Fleet 5%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout danger" style="margin-top:2rem;">
+      <strong>Key Risk: Seasonality</strong>
+      The high concentration of revenue in the 4-month tourist season (Jun–Sep) means the digester may operate below capacity in winter. Mitigation: livestock manure co-digestion agreements with 3–4 Kalloni valley farms provide year-round feedstock stability, while a 2-month reserve fund covers seasonal operating costs.
+    </div>
+  </div>
+</section>
+
+<hr class="chapter-divider">
+
+<!-- ═══════════════════════════════ CHAPTER 7: COMMUNITY ═══ -->
+<section class="chapter bg-deep" id="community">
+  <div class="container">
+    <div class="chapter-label">Chapter 7 · The Energy Community</div>
+    <h2 class="chapter-title">Building the Cooperative: 30 Households + Women's Power</h2>
+    <p class="chapter-intro">Under Greek Law 5037/2023, a Renewable Energy Community (REC) cooperative needs a minimum of 30 members — exactly our founding group. The women's cooperative as co-anchor adds economic resilience and social capital.</p>
+
+    <div class="card-grid">
+      <div class="card" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+        <div class="card-icon" style="background:rgba(116,198,157,0.2);">👩‍🌾</div>
+        <h3 style="color:var(--green-light);">Women's Cooperative Role</h3>
+        <p style="color:rgba(255,255,255,0.75);">Operates waste collection logistics (paid work). Uses CHP waste heat for olive oil processing, preserves production and food drying. Manages digestate sales to farmers. A minimum of 6 paid FTE equivalent positions created.</p>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+        <div class="card-icon" style="background:rgba(116,198,157,0.2);">🏠</div>
+        <h3 style="color:var(--green-light);">30 Founding Households</h3>
+        <p style="color:rgba(255,255,255,0.75);">Each member contributes organic kitchen waste, receives electricity bill credits (~€40–60/month), and holds one vote in the cooperative's general assembly. Share capital: €500–1,000 per member.</p>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+        <div class="card-icon" style="background:rgba(116,198,157,0.2);">🍽️</div>
+        <h3 style="color:var(--green-light);">Taverna Partners</h3>
+        <p style="color:rgba(255,255,255,0.75);">Restaurants participate as waste-supply partners (not full members unless desired). They pay a tipping fee instead of skip hire, gaining marketing value as "circular economy restaurants" — a growing tourism differentiator.</p>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+        <div class="card-icon" style="background:rgba(116,198,157,0.2);">🏛️</div>
+        <h3 style="color:var(--green-light);">Municipal Partnership</h3>
+        <p style="color:rgba(255,255,255,0.75);">Municipality of Western Lesvos can participate as a member under Law 5037/2023, providing land (Zone A), political support, and access to ESPA/EU grant applications. Municipality also benefits from reduced waste management costs.</p>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:3rem;">
+      <div>
+        <h3 style="color:var(--green-light);font-family:var(--serif);font-size:1.2rem;margin-bottom:1rem;">Governance Structure</h3>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:1.5rem;">
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div style="border-left:3px solid var(--green-light);padding-left:1rem;">
+              <div style="font-size:11px;color:var(--green-light);text-transform:uppercase;letter-spacing:.1em;font-weight:700;">General Assembly (all 30+ members)</div>
+              <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;margin-top:4px;">Votes on major decisions. One member, one vote. Annual meeting + extraordinary sessions. Surplus distribution policy set here.</p>
+            </div>
+            <div style="border-left:3px solid var(--amber);padding-left:1rem;">
+              <div style="font-size:11px;color:var(--amber);text-transform:uppercase;letter-spacing:.1em;font-weight:700;">Board of Directors (5 members)</div>
+              <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;margin-top:4px;">Elected triannually. Includes at least 2 women's cooperative representatives. Manages daily operations, contracts, and financial oversight.</p>
+            </div>
+            <div style="border-left:3px solid var(--sky-light);padding-left:1rem;">
+              <div style="font-size:11px;color:var(--sky-light);text-transform:uppercase;letter-spacing:.1em;font-weight:700;">Technical Manager (paid, 0.5 FTE)</div>
+              <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;margin-top:4px;">Monitors digester operation, liaisons with DEDDIE, handles permits and environmental compliance reporting.</p>
+            </div>
+            <div style="border-left:3px solid #ce93d8;padding-left:1rem;">
+              <div style="font-size:11px;color:#ce93d8;text-transform:uppercase;letter-spacing:.1em;font-weight:700;">Cooperative Logistics Team (3–4 FTE)</div>
+              <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;margin-top:4px;">Waste collection, digestate distribution, and food processing (women's coop). Primary job creation output of the project.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="color:var(--green-light);font-family:var(--serif);font-size:1.2rem;margin-bottom:1rem;">Social &amp; Co-Benefits</h3>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:1rem;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:22px;">👩‍💼</span>
+            <div>
+              <strong style="color:#fff;font-size:0.9rem;">Female economic empowerment</strong>
+              <p style="color:rgba(255,255,255,0.65);font-size:0.85rem;margin-top:2px;">Women's cooperative anchors governance, earns from logistics, heat, and digestate sales. Creates durable economic agency independent of seasonal tourism.</p>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:1rem;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:22px;">🏝️</span>
+            <div>
+              <strong style="color:#fff;font-size:0.9rem;">Island energy resilience</strong>
+              <p style="color:rgba(255,255,255,0.65);font-size:0.85rem;margin-top:2px;">Reduces dependence on expensive island grid imports. Protects 30 households from volatile electricity prices.</p>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:1rem;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:22px;">🌱</span>
+            <div>
+              <strong style="color:#fff;font-size:0.9rem;">Natura 2000 protection</strong>
+              <p style="color:rgba(255,255,255,0.65);font-size:0.85rem;margin-top:2px;">Diverts organic waste from illegal dumping and landfill leachate that threatens Gulf of Kalloni wetland. Digestate replaces chemical fertilisers near waterways.</p>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:1rem;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:22px;">📣</span>
+            <div>
+              <strong style="color:#fff;font-size:0.9rem;">Replicable model</strong>
+              <p style="color:rgba(255,255,255,0.65);font-size:0.85rem;margin-top:2px;">Documented as a transferable StoryMap case study for Aegean island municipalities — Chios, Samos, Ikaria, Lemnos share identical challenges.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="chapter-divider">
+
+<!-- ═══════════════════════════════ CHAPTER 8: ROADMAP ═══ -->
+<section class="chapter" id="roadmap">
+  <div class="container">
+    <div class="chapter-label">Chapter 8 · Implementation Roadmap</div>
+    <h2 class="chapter-title">From Vision to First Flame: 3-Year Pathway</h2>
+    <p class="chapter-intro">A realistic phased implementation plan, built around Greek permitting timelines, EU funding cycles and the cooperative formation process.</p>
+
+    <div class="two-col">
+      <div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-year">Phase 0 · Now (2025)</div>
+            <h4>Feasibility &amp; Community Formation</h4>
+            <p>Present StoryMap to Municipality of Western Lesvos and local women's cooperative. Recruit 30 founding members. Commission geotechnical survey of Zone A. Apply for pre-approval from RAE.</p>
+            <div style="margin-top:8px;"><span class="badge">3 months</span><span class="badge amber">€5–8K cost</span></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-year">Phase 1 · Q1–Q2 2026</div>
+            <h4>Legal Formation &amp; Grant Application</h4>
+            <p>Register REC cooperative (Law 5037/2023). Submit ESPA 2021–2027 application for "Renewable Energy Communities on islands" call. Environmental pre-screening (Natura 2000 check). Waste supply agreements with tavernas.</p>
+            <div style="margin-top:8px;"><span class="badge">4–5 months</span><span class="badge amber">€8–12K legal/admin</span></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-year">Phase 2 · Q3 2026–Q1 2027</div>
+            <h4>Permitting &amp; Design</h4>
+            <p>Environmental Impact Assessment (Class II) submission. Technical design tender. DEDDIE grid connection application. Land transfer/lease from municipality finalised. RAE production licence issued.</p>
+            <div style="margin-top:8px;"><span class="badge">6–8 months</span><span class="badge amber">€15–20K</span></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-year">Phase 3 · Q2–Q4 2027</div>
+            <h4>Construction &amp; Commissioning</h4>
+            <p>Civil works, digester installation, gas handling, CHP unit and grid connection. Waste collection fleet procurement. Staff training. Initial feedstock trial (co-digestion pilot). First biogas flame.</p>
+            <div style="margin-top:8px;"><span class="badge">6 months</span><span class="badge amber">€140–150K (post grant: €60–90K)</span></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">5</div>
+            <div class="timeline-year">Phase 4 · 2028 onwards</div>
+            <h4>Full Operation &amp; Expansion</h4>
+            <p>First full tourist season with operational system. Monitoring and optimisation. Evaluate digestate market. Explore Phase 2: biomethane upgrading or second digester. Publish replication case study for other Aegean islands.</p>
+            <div style="margin-top:8px;"><span class="badge">Ongoing</span><span class="badge" style="background:var(--green-pale);color:var(--green-deep);">Revenue positive</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--green-deep);margin-bottom:1rem;">Risk &amp; Mitigation Register</h3>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div class="card danger" style="padding:1rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <h3 style="font-size:0.9rem;">Permitting Delays</h3>
+              <span class="badge danger">High</span>
+            </div>
+            <p>EIA near Natura 2000 may face scrutiny. Mitigation: engage environmental NGO (e.g. WWF Greece) early as project supporter, demonstrate 300m+ buffer compliance.</p>
+          </div>
+          <div class="card amber" style="padding:1rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <h3 style="font-size:0.9rem;">Feedstock Insufficiency</h3>
+              <span class="badge amber">Medium</span>
+            </div>
+            <p>Winter waste gaps. Mitigation: signed co-digestion agreements with 3 livestock farms before construction. Target 70% minimum capacity utilisation year-round.</p>
+          </div>
+          <div class="card amber" style="padding:1rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <h3 style="font-size:0.9rem;">Member Disengagement</h3>
+              <span class="badge amber">Medium</span>
+            </div>
+            <p>Cooperative cohesion risk. Mitigation: visible monthly bill savings statements, quarterly community BBQs (powered by the biogas), annual cooperative assembly with financial transparency.</p>
+          </div>
+          <div class="card" style="padding:1rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <h3 style="font-size:0.9rem;">Grant Non-Award</h3>
+              <span class="badge">Low–Medium</span>
+            </div>
+            <p>ESPA call oversubscribed. Mitigation: island REC projects receive scoring bonus. Fallback: bridge loan from Cooperative Bank of Karditsa or Green Fund.</p>
+          </div>
+          <div class="card" style="padding:1rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <h3 style="font-size:0.9rem;">Technical Failure</h3>
+              <span class="badge">Low</span>
+            </div>
+            <p>Proven technology at this scale. Mitigation: 2-year maintenance contract with digester supplier, remote monitoring system, annual inspection protocol.</p>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:1.5rem;">
+          <strong>Replication Value</strong>
+          This StoryMap is designed as a transferable template. Replace coordinates, waste volume data and member profile to adapt for Chios, Samos, Ikaria or any Aegean island with a similar tourism-waste-agriculture nexus.
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="cta-block">
+      <h3>Ready to Light the First Flame?</h3>
+      <p>This StoryMap is a living planning tool. Download the full feasibility data, share with the Municipality of Western Lesvos, and take the first step toward an energy community that transforms tourism's waste into community power.</p>
+      <a href="#top" class="btn-primary">Start Over &amp; Explore Again</a>
+      <a href="#economics" class="btn-secondary">Review the Economics</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="max-width:700px;margin:0 auto;">
+    <strong>Skala Kallonis Biogas Energy Community — ArcGIS StoryMap</strong><br>
+    Feasibility analysis prepared for community planning purposes · Lesvos (Lesbos), North Aegean, Greece<br>
+    Based on data from: Greek Law 5037/2023 · Law 5215/2025 · EU REC Directive 2018/2001 · IPCC biomass emission factors · published anaerobic digestion yield data · Skala Kallonis tourism statistics<br><br>
+    <em>This is a transferable StoryMap. All data, calculations and zone identifications are indicative estimates for planning purposes and should be verified by a licensed engineer before implementation. Environmental permitting must comply with current Greek and EU regulations regarding Natura 2000 areas.</em>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+function toggleAcc(btn) {
+  btn.classList.toggle('open');
+  var body = btn.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var vals = [1800,1800,2200,2800,3500,4800,5500,5200,4200,3000,2200,1900];
+var colors = vals.map(function(v){ return v > 4000 ? '#2d6a4f' : '#74c69d'; });
+
+new Chart(document.getElementById('biogasChart'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [{
+      label: 'Biogas m³',
+      data: vals,
+      backgroundColor: colors,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { autoSkip: false, font: { size: 11 } } },
+      y: { beginAtZero: true, ticks: { font: { size: 11 } } }
+    }
+  }
+});
+
+new Chart(document.getElementById('seasonChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Dec–Feb','Mar–May','Jun–Aug','Sep–Nov'],
+    datasets: [
+      { label: 'Tourism waste', data: [10, 35, 65, 45], backgroundColor: '#e74c3c', stack: 'a', borderRadius: 0 },
+      { label: 'Household waste', data: [35, 30, 22, 30], backgroundColor: '#f4a261', stack: 'a', borderRadius: 0 },
+      { label: 'Agri co-substrates', data: [55, 35, 13, 25], backgroundColor: '#74c69d', stack: 'a', borderRadius: 0 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: true, labels: { font: { size: 10 }, boxWidth: 12 } } },
+    scales: {
+      x: { stacked: true, ticks: { font: { size: 11 } } },
+      y: { stacked: true, max: 100, ticks: { callback: function(v){ return v+'%'; }, font: { size: 11 } } }
+    }
+  }
+});
+
+var years = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+var cf = [-72,-68,-60,-51,-42,-33,-22,-11,2,16,32,48,65,83,100,116];
+new Chart(document.getElementById('cashflowChart'), {
+  type: 'line',
+  data: {
+    labels: years,
+    datasets: [{
+      label: 'Cumulative cash flow (€K)',
+      data: cf,
+      borderColor: '#2d6a4f',
+      backgroundColor: function(ctx) {
+        var chart = ctx.chart;
+        var c = chart.ctx;
+        var gradient = c.createLinearGradient(0, 0, 0, 220);
+        gradient.addColorStop(0, 'rgba(64,145,108,0.3)');
+        gradient.addColorStop(1, 'rgba(64,145,108,0)');
+        return gradient;
+      },
+      fill: true,
+      tension: 0.3,
+      pointRadius: 4,
+      pointBackgroundColor: function(ctx) {
+        var v = ctx.raw;
+        return v >= 0 ? '#2d6a4f' : '#e53e3e';
+      }
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      annotation: {}
+    },
+    scales: {
+      x: { title: { display: true, text: 'Year', font: { size: 11 } }, ticks: { font: { size: 11 } } },
+      y: {
+        title: { display: true, text: '€ thousands', font: { size: 11 } },
+        ticks: { callback: function(v){ return '€'+v+'K'; }, font: { size: 11 } }
+      }
+    }
+  }
+});
+
+new Chart(document.getElementById('costChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Digester 35%','CHP 20%','Civil 18%','Gas handling 12%','Grid 10%','Fleet 5%'],
+    datasets: [{
+      data: [35,20,18,12,10,5],
+      backgroundColor: ['#2d6a4f','#40916c','#74c69d','#f4a261','#023e8a','#e76f51'],
+      borderWidth: 2,
+      borderColor: '#fff',
+      hoverOffset: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '60%',
+    plugins: { legend: { display: false } }
+  }
+});
+
+var navLinks = document.querySelectorAll('.chapter-nav a');
+function updateNav() {
+  var scrollY = window.scrollY;
+  var sections = document.querySelectorAll('section[id]');
+  var current = '';
+  sections.forEach(function(s) {
+    if (scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(function(a) {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+</script>
+</body>
+</html>
