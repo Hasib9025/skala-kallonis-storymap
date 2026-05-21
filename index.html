@@ -159,7 +159,7 @@
     width: 100%;
     border-radius: 16px;
     overflow: hidden;
-    border: 2px solid var(--black);
+    border: 2px solid var(--light green);
     position: relative;
     background: #e8f5e9;
   }
@@ -813,101 +813,6 @@
 </section>
 
 <hr class="section-divider">
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 6 · ECONOMICS
-══════════════════════════════════════════════════ -->
-<section class="chapter bg-cream" id="economics">
-  <div class="container">
-    <h2 class="chapter-title">Economic Sustainability</h2>
-    <p class="chapter-intro">A community biogas project at this scale is economically viable within 7–9 years under conservative assumptions, with multiple revenue streams reinforcing long-term sustainability.</p>
-
-    <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-bottom:2rem;">
-      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Capital Cost</div>
-        <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--green-deep);">€180K</div>
-        <div style="font-size:11px;color:#999;">estimated total install</div>
-      </div>
-      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">EU Grant Coverage</div>
-        <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--green-bright);">40–60%</div>
-        <div style="font-size:11px;color:#999;">via ESPA 2021–2027</div>
-      </div>
-      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Annual Revenue</div>
-        <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--amber-dark);">€28–45K</div>
-        <div style="font-size:11px;color:#999;">electricity + fertiliser + savings</div>
-      </div>
-      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Payback Period</div>
-        <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--sky);">7–9 yrs</div>
-        <div style="font-size:11px;color:#999;">after EU grant</div>
-      </div>
-      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Per-Household Saving</div>
-        <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--green-deep);">€900/yr</div>
-        <div style="font-size:11px;color:#999;">average across 30 households</div>
-      </div>
-    </div>
-
-    <div class="two-col">
-      <div>
-        <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--green-deep);margin-bottom:1rem;">Revenue Streams</h3>
-        <div style="overflow:auto;border-radius:12px;border:1px solid #e2e8f0;">
-          <table class="data-table">
-            <thead>
-              <tr><th>Revenue Stream</th><th>Annual Est. (€)</th><th>Notes</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Electricity self-consumption savings</td><td class="highlight">€14,400–18,000</td><td>30 HH × €480–600/yr, at Greek island tariff ~€0.32/kWh</td></tr>
-              <tr><td>Electricity VNM credits / sale</td><td class="highlight">€4,000–7,500</td><td>Surplus power credited under REC net metering</td></tr>
-              <tr><td>Digestate biofertiliser sales</td><td class="highlight">€3,500–6,000</td><td>130–170 t/yr at €15–25/m³ to local farmers</td></tr>
-              <tr><td>Waste collection service fees</td><td class="highlight">€4,000–6,000</td><td>Tavernas pay €150–250/month (saves them skip hire)</td></tr>
-              <tr><td>Women's coop heat use value</td><td class="highlight">€2,000–3,500</td><td>CHP waste heat for food processing</td></tr>
-              <tr><td>Carbon credit potential</td><td class="highlight">€800–1,200</td><td>EU ETS voluntary credits for waste diversion</td></tr>
-              <tr style="background:var(--green-pale)!important;">
-                <td><strong>TOTAL</strong></td>
-                <td><strong class="highlight">€28,700–42,200</strong></td>
-                <td><strong>Conservative to optimistic range</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="callout" style="margin-top:1.5rem;">
-          <strong>Funding</strong>
-          ESPA 2021–2027 explicitly supports energy community projects on Greek islands. Additionally, the RES Special Account (LAGIE) provides feed-in premium for biogas &lt;500 kW. The women's cooperative may also access LEADER rural development grants.
-        </div>
-      </div>
-      <div>
-        <div class="chart-wrap" style="margin-bottom:1.5rem;">
-          <div class="chart-title">Cumulative Cash Flow Projection (€ thousands)</div>
-          <div style="position:relative;height:260px;">
-            <canvas id="cashflowChart"></canvas>
-          </div>
-        </div>
-        <div class="chart-wrap">
-          <div class="chart-title">Capital Cost Breakdown</div>
-          <div style="position:relative;height:200px;">
-            <canvas id="costChart"></canvas>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;font-size:11px;">
-            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#2d6a4f;display:inline-block;"></span>Digester 35%</span>
-            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#40916c;display:inline-block;"></span>CHP 20%</span>
-            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#74c69d;display:inline-block;"></span>Civil 18%</span>
-            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#f4a261;display:inline-block;"></span>Gas handling 12%</span>
-            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#023e8a;display:inline-block;"></span>Grid 10%</span>
-            <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#e76f51;display:inline-block;"></span>Fleet 5%</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout danger" style="margin-top:2rem;">
-      <strong>Key Risk: Seasonality</strong>
-      The high concentration of revenue in the 4-month tourist season means the digester may operate below capacity in winter. Mitigation: livestock manure co-digestion agreements with 3–4 Kalloni valley farms provide year-round feedstock stability.
-    </div>
-  </div>
-</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
